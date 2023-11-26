@@ -154,6 +154,8 @@ COMMENT ON COLUMN orders.customer_id IS '顧客ID';
 COMMENT ON TABLE order_items IS '注文明細';
 COMMENT ON COLUMN order_items.order_id IS '注文ID';
 COMMENT ON COLUMN order_items.book_id IS '書籍ID';
+COMMENT ON COLUMN order_items.quantity IS '数量';
+COMMENT ON COLUMN order_items.price IS '価格';
 
 COMMENT ON TABLE shipping_addresses IS '配送先';
 COMMENT ON COLUMN shipping_addresses.customer_id IS '顧客ID';

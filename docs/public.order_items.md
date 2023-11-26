@@ -11,8 +11,8 @@
 | id | text |  | false |  |  |  |
 | order_id | text |  | false |  | [public.orders](public.orders.md) | 注文ID |
 | book_id | text |  | false |  | [public.books](public.books.md) | 書籍ID |
-| quantity | integer |  | false |  |  |  |
-| price | integer |  | false |  |  |  |
+| quantity | integer |  | false |  |  | 数量 |
+| price | integer |  | false |  |  | 価格 |
 
 ## 制約一覧
 
