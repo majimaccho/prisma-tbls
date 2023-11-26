@@ -17,6 +17,8 @@ model Product {
   @@map("products")
 }
 
+
+// モデルは実践的データモデリング入門162ページから拝借
 model Book {
   id          String      @id
   title       String
