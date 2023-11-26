@@ -1,25 +1,18 @@
-# app
+# 書籍の購入
 
-## Viewpoints
+## 概要
 
-| 名前 | 概要 |
-| ---- | ----------- |
-| [書籍の追加](viewpoint-0.md) | 書籍を追加する |
-| [顧客の追加](viewpoint-1.md) | 顧客を追加する |
-| [配送先の追加](viewpoint-2.md) | 配送先を追加する |
-| [書籍の購入](viewpoint-3.md) | 書籍を購入する |
+書籍を購入する
 
 ## テーブル一覧
 
 | 名前 | カラム一覧 | コメント | タイプ |
 | ---- | ------- | ------- | ---- |
-| [public._prisma_migrations](public._prisma_migrations.md) | 8 |  | BASE TABLE |
 | [public.products](public.products.md) | 2 | 商品 | BASE TABLE |
 | [public.books](public.books.md) | 6 | 書籍 | BASE TABLE |
 | [public.publishers](public.publishers.md) | 2 | 出版社 | BASE TABLE |
 | [public.authors](public.authors.md) | 2 | 著者 | BASE TABLE |
 | [public.author_books](public.author_books.md) | 2 | 著者と書籍の関連 | BASE TABLE |
-| [public.book_images](public.book_images.md) | 3 | 書籍画像 | BASE TABLE |
 | [public.customers](public.customers.md) | 4 | 顧客 | BASE TABLE |
 | [public.orders](public.orders.md) | 2 | 注文 | BASE TABLE |
 | [public.order_items](public.order_items.md) | 5 | 注文明細 | BASE TABLE |
@@ -33,22 +26,11 @@ erDiagram
 "public.books" }o--|| "public.publishers" : "FOREIGN KEY (publisher_id) REFERENCES publishers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
 "public.author_books" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
 "public.author_books" }o--|| "public.authors" : "FOREIGN KEY (author_id) REFERENCES authors(id) ON UPDATE CASCADE ON DELETE RESTRICT"
-"public.book_images" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
 "public.orders" }o--|| "public.customers" : "FOREIGN KEY (customer_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
 "public.order_items" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
 "public.order_items" }o--|| "public.orders" : "FOREIGN KEY (order_id) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE RESTRICT"
 "public.shipping_addresses" }o--|| "public.customers" : "FOREIGN KEY (customer_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
 
-"public._prisma_migrations" {
-  varchar_36_ id
-  varchar_64_ checksum
-  timestamp_with_time_zone finished_at
-  varchar_255_ migration_name
-  text logs
-  timestamp_with_time_zone rolled_back_at
-  timestamp_with_time_zone started_at
-  integer applied_steps_count
-}
 "public.products" {
   text id
   text code
@@ -59,7 +41,7 @@ erDiagram
   timestamp_3__without_time_zone published_on
   integer price
   text subtitle
-  text publisher_id FK
+  text publisher_id
 }
 "public.publishers" {
   text id
@@ -70,13 +52,8 @@ erDiagram
   text name
 }
 "public.author_books" {
-  text author_id FK
-  text book_id FK
-}
-"public.book_images" {
-  text id
-  text url
-  text book_id FK
+  text author_id
+  text book_id
 }
 "public.customers" {
   text id
@@ -86,18 +63,18 @@ erDiagram
 }
 "public.orders" {
   text id
-  text customer_id FK
+  text customer_id
 }
 "public.order_items" {
   text id
-  text order_id FK
-  text book_id FK
+  text order_id
+  text book_id
   integer quantity
   integer price
 }
 "public.shipping_addresses" {
   text id
-  text customer_id FK
+  text customer_id
   text name
   text postal_code
   text address

@@ -13,6 +13,14 @@
 | email | text |  | false |  |  | メールアドレス |
 | password | text |  | false |  |  | パスワード |
 
+## Viewpoints
+
+| 名前 | 定義 |
+| ---- | ---------- |
+| [顧客の追加](viewpoint-1.md) | 顧客を追加する |
+| [配送先の追加](viewpoint-2.md) | 配送先を追加する |
+| [書籍の購入](viewpoint-3.md) | 書籍を購入する |
+
 ## 制約一覧
 
 | 名前 | タイプ | 定義 |

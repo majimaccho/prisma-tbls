@@ -11,6 +11,12 @@
 | id | text |  | false | [public.order_items](public.order_items.md) |  |  |
 | customer_id | text |  | false |  | [public.customers](public.customers.md) | 顧客ID |
 
+## Viewpoints
+
+| 名前 | 定義 |
+| ---- | ---------- |
+| [書籍の購入](viewpoint-3.md) | 書籍を購入する |
+
 ## 制約一覧
 
 | 名前 | タイプ | 定義 |

@@ -15,6 +15,13 @@
 | address | text |  | false |  |  | 住所 |
 | tel | text |  | false |  |  | 電話番号 |
 
+## Viewpoints
+
+| 名前 | 定義 |
+| ---- | ---------- |
+| [配送先の追加](viewpoint-2.md) | 配送先を追加する |
+| [書籍の購入](viewpoint-3.md) | 書籍を購入する |
+
 ## 制約一覧
 
 | 名前 | タイプ | 定義 |

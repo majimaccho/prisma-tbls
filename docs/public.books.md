@@ -15,6 +15,13 @@
 | subtitle | text |  | false |  |  | サブタイトル |
 | publisher_id | text |  | false |  | [public.publishers](public.publishers.md) | 出版社ID |
 
+## Viewpoints
+
+| 名前 | 定義 |
+| ---- | ---------- |
+| [書籍の追加](viewpoint-0.md) | 書籍を追加する |
+| [書籍の購入](viewpoint-3.md) | 書籍を購入する |
+
 ## 制約一覧
 
 | 名前 | タイプ | 定義 |

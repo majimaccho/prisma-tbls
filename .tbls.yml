@@ -30,43 +30,43 @@ lint:
     enabled: true
 lintExclude:
   - _prisma_migrations
-# viewpoints:
-#   -
-#     name: 書籍の追加
-#     desc: 書籍を追加する
-#     tables:
-#       - books
-#       - products
-#       - publishers
-#       - authors
-#       - author_books
-#       - book_images
+viewpoints:
+  -
+    name: 書籍の追加
+    desc: 書籍を追加する
+    tables:
+      - books
+      - products
+      - publishers
+      - authors
+      - author_books
+      - book_images
 
-#   - 
-#     name: 顧客の追加
-#     desc: 顧客を追加する
-#     tables:
-#       - customers
+  - 
+    name: 顧客の追加
+    desc: 顧客を追加する
+    tables:
+      - customers
 
-#   - 
-#     name: 配送先の追加
-#     desc: 配送先を追加する
-#     tables:
-#       - shipping_addresses
-#       - customers
+  - 
+    name: 配送先の追加
+    desc: 配送先を追加する
+    tables:
+      - shipping_addresses
+      - customers
 
-#   - 
-#     name: 書籍の購入
-#     desc: 書籍を購入する
-#     tables:
-#       - books
-#       - products
-#       - publishers
-#       - authors
-#       - author_books
-#       - customers
-#       - shipping_addresses
-#       - orders
-#       - order_items
+  - 
+    name: 書籍の購入
+    desc: 書籍を購入する
+    tables:
+      - books
+      - products
+      - publishers
+      - authors
+      - author_books
+      - customers
+      - shipping_addresses
+      - orders
+      - order_items
 
   

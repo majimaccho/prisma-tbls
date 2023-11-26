@@ -14,6 +14,12 @@
 | quantity | integer |  | false |  |  | 数量 |
 | price | integer |  | false |  |  | 価格 |
 
+## Viewpoints
+
+| 名前 | 定義 |
+| ---- | ---------- |
+| [書籍の購入](viewpoint-3.md) | 書籍を購入する |
+
 ## 制約一覧
 
 | 名前 | タイプ | 定義 |
