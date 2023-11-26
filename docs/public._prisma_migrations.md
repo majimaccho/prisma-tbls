@@ -29,7 +29,21 @@
 
 ## ER図
 
-![er](public._prisma_migrations.svg)
+```mermaid
+erDiagram
+
+
+"public._prisma_migrations" {
+  varchar_36_ id
+  varchar_64_ checksum
+  timestamp_with_time_zone finished_at
+  varchar_255_ migration_name
+  text logs
+  timestamp_with_time_zone rolled_back_at
+  timestamp_with_time_zone started_at
+  integer applied_steps_count
+}
+```
 
 ---
 

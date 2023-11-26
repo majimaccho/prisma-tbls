@@ -26,7 +26,15 @@
 
 ## ER図
 
-![er](public.products.svg)
+```mermaid
+erDiagram
+
+
+"public.products" {
+  text id
+  text code
+}
+```
 
 ---
 

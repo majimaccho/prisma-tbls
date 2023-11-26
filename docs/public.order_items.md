@@ -30,7 +30,32 @@
 
 ## ER図
 
-![er](public.order_items.svg)
+```mermaid
+erDiagram
+
+"public.order_items" }o--|| "public.orders" : "FOREIGN KEY (order_id) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.order_items" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+
+"public.order_items" {
+  text id
+  text order_id FK
+  text book_id FK
+  integer quantity
+  integer price
+}
+"public.orders" {
+  text id
+  text customer_id FK
+}
+"public.books" {
+  text id
+  text title
+  timestamp_3__without_time_zone published_on
+  integer price
+  text subtitle
+  text publisher_id FK
+}
+```
 
 ---
 

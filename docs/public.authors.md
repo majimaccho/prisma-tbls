@@ -25,7 +25,20 @@
 
 ## ER図
 
-![er](public.authors.svg)
+```mermaid
+erDiagram
+
+"public.author_books" }o--|| "public.authors" : "FOREIGN KEY (author_id) REFERENCES authors(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+
+"public.authors" {
+  text id
+  text name
+}
+"public.author_books" {
+  text author_id FK
+  text book_id FK
+}
+```
 
 ---
 

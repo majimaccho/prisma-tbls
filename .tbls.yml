@@ -1,6 +1,7 @@
 dsn: postgresql://postgres:postgres@localhost:5432/app?sslmode=disable
 docPath: ./docs
-
+er:
+  format: mermaid
 dict:
   Tables: テーブル一覧
   Description: 概要
@@ -17,3 +18,14 @@ dict:
   Parents: 親テーブル
   Definition: 定義
   Table Definition: テーブル定義
+
+# viewpoints:
+#   -
+#     name: 書籍の追加
+#     desc: 書籍を追加する
+#     tables:
+#       - books
+#       - products
+#       - publishers
+#       - authors
+#       - author_books

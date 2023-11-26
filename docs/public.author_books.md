@@ -27,7 +27,29 @@
 
 ## ER図
 
-![er](public.author_books.svg)
+```mermaid
+erDiagram
+
+"public.author_books" }o--|| "public.authors" : "FOREIGN KEY (author_id) REFERENCES authors(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.author_books" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+
+"public.author_books" {
+  text author_id FK
+  text book_id FK
+}
+"public.authors" {
+  text id
+  text name
+}
+"public.books" {
+  text id
+  text title
+  timestamp_3__without_time_zone published_on
+  integer price
+  text subtitle
+  text publisher_id FK
+}
+```
 
 ---
 

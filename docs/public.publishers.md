@@ -25,7 +25,24 @@
 
 ## ER図
 
-![er](public.publishers.svg)
+```mermaid
+erDiagram
+
+"public.books" }o--|| "public.publishers" : "FOREIGN KEY (publisher_id) REFERENCES publishers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+
+"public.publishers" {
+  text id
+  text name
+}
+"public.books" {
+  text id
+  text title
+  timestamp_3__without_time_zone published_on
+  integer price
+  text subtitle
+  text publisher_id FK
+}
+```
 
 ---
 

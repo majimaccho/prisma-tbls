@@ -30,7 +30,26 @@
 
 ## ER図
 
-![er](public.shipping_addresses.svg)
+```mermaid
+erDiagram
+
+"public.shipping_addresses" }o--|| "public.customers" : "FOREIGN KEY (customer_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+
+"public.shipping_addresses" {
+  text id
+  text customer_id FK
+  text name
+  text postal_code
+  text address
+  text tel
+}
+"public.customers" {
+  text id
+  text name
+  text email
+  text password
+}
+```
 
 ---
 

@@ -26,7 +26,30 @@
 
 ## ER図
 
-![er](public.orders.svg)
+```mermaid
+erDiagram
+
+"public.order_items" }o--|| "public.orders" : "FOREIGN KEY (order_id) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.orders" }o--|| "public.customers" : "FOREIGN KEY (customer_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+
+"public.orders" {
+  text id
+  text customer_id FK
+}
+"public.order_items" {
+  text id
+  text order_id FK
+  text book_id FK
+  integer quantity
+  integer price
+}
+"public.customers" {
+  text id
+  text name
+  text email
+  text password
+}
+```
 
 ---
 

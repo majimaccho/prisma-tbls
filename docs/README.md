@@ -18,7 +18,83 @@
 
 ## ER図
 
-![er](schema.svg)
+```mermaid
+erDiagram
+
+"public.books" }o--|| "public.publishers" : "FOREIGN KEY (publisher_id) REFERENCES publishers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.author_books" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.author_books" }o--|| "public.authors" : "FOREIGN KEY (author_id) REFERENCES authors(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.book_images" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.orders" }o--|| "public.customers" : "FOREIGN KEY (customer_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.order_items" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.order_items" }o--|| "public.orders" : "FOREIGN KEY (order_id) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.shipping_addresses" }o--|| "public.customers" : "FOREIGN KEY (customer_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+
+"public._prisma_migrations" {
+  varchar_36_ id
+  varchar_64_ checksum
+  timestamp_with_time_zone finished_at
+  varchar_255_ migration_name
+  text logs
+  timestamp_with_time_zone rolled_back_at
+  timestamp_with_time_zone started_at
+  integer applied_steps_count
+}
+"public.products" {
+  text id
+  text code
+}
+"public.books" {
+  text id
+  text title
+  timestamp_3__without_time_zone published_on
+  integer price
+  text subtitle
+  text publisher_id FK
+}
+"public.publishers" {
+  text id
+  text name
+}
+"public.authors" {
+  text id
+  text name
+}
+"public.author_books" {
+  text author_id FK
+  text book_id FK
+}
+"public.book_images" {
+  text id
+  text url
+  text book_id FK
+}
+"public.customers" {
+  text id
+  text name
+  text email
+  text password
+}
+"public.orders" {
+  text id
+  text customer_id FK
+}
+"public.order_items" {
+  text id
+  text order_id FK
+  text book_id FK
+  integer quantity
+  integer price
+}
+"public.shipping_addresses" {
+  text id
+  text customer_id FK
+  text name
+  text postal_code
+  text address
+  text tel
+}
+```
 
 ---
 

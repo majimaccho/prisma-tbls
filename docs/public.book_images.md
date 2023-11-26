@@ -27,7 +27,25 @@
 
 ## ER図
 
-![er](public.book_images.svg)
+```mermaid
+erDiagram
+
+"public.book_images" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+
+"public.book_images" {
+  text id
+  text url
+  text book_id FK
+}
+"public.books" {
+  text id
+  text title
+  timestamp_3__without_time_zone published_on
+  integer price
+  text subtitle
+  text publisher_id FK
+}
+```
 
 ---
 

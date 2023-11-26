@@ -30,7 +30,43 @@
 
 ## ER図
 
-![er](public.books.svg)
+```mermaid
+erDiagram
+
+"public.author_books" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.book_images" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.order_items" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+"public.books" }o--|| "public.publishers" : "FOREIGN KEY (publisher_id) REFERENCES publishers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
+
+"public.books" {
+  text id
+  text title
+  timestamp_3__without_time_zone published_on
+  integer price
+  text subtitle
+  text publisher_id FK
+}
+"public.author_books" {
+  text author_id FK
+  text book_id FK
+}
+"public.book_images" {
+  text id
+  text url
+  text book_id FK
+}
+"public.order_items" {
+  text id
+  text order_id FK
+  text book_id FK
+  integer quantity
+  integer price
+}
+"public.publishers" {
+  text id
+  text name
+}
+```
 
 ---
 
