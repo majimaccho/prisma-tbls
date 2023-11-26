@@ -1,0 +1,112 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id   String @id
+  code String @unique
+
+  @@map("products")
+}
+
+model Book {
+  id          String      @id
+  title       String
+  publishedOn DateTime    @map("published_on")
+  price       Int
+  subtitle    String
+  publisherId String      @map("publisher_id")
+  pubulisher  Publisher   @relation(fields: [publisherId], references: [id])
+  authorBooks AuthorBook[]
+  images      BookImage[]
+  orderItems  OrderItem[]
+
+  @@map("books")
+}
+
+model Publisher {
+  id    String @id
+  name  String
+  books Book[]
+
+  @@map("publishers")
+}
+
+model Author {
+  id    String @id
+  name  String
+  authorBooks AuthorBook[]
+
+  @@map("authors")
+}
+
+model AuthorBook {
+  authorId String @map("author_id")
+  bookId   String @map("book_id")
+  author   Author @relation(fields: [authorId], references: [id])
+  book     Book   @relation(fields: [bookId], references: [id])
+
+  @@id([authorId, bookId])
+  @@map("author_books")
+}
+
+model BookImage {
+  id     String @id
+  url    String
+  bookId String @map("book_id")
+  book   Book   @relation(fields: [bookId], references: [id])
+
+  @@map("book_images")
+}
+
+model Customer {
+  id                String            @id
+  name              String
+  email             String
+  password          String
+  orders            Order[]
+  shippingAddresses ShippingAddress[]
+
+  @@map("customers")
+}
+
+model Order {
+  id         String      @id
+  customerId String      @map("customer_id")
+  customer   Customer    @relation(fields: [customerId], references: [id])
+  orderItems OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id       String @id
+  orderId  String @map("order_id")
+  order    Order  @relation(fields: [orderId], references: [id])
+  bookId   String @map("book_id")
+  book     Book   @relation(fields: [bookId], references: [id])
+  quantity Int
+  price    Int
+
+  @@map("order_items")
+}
+
+model ShippingAddress {
+  id         String   @id
+  customerId String   @map("customer_id")
+  customer   Customer @relation(fields: [customerId], references: [id])
+  name       String
+  postalCode String   @map("postal_code")
+  address    String
+  tel        String
+
+  @@map("shipping_addresses")
+}
