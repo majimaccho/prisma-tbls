@@ -119,8 +119,8 @@ ALTER TABLE "order_items" ADD CONSTRAINT "order_items_book_id_fkey" FOREIGN KEY 
 -- AddForeignKey
 ALTER TABLE "shipping_addresses" ADD CONSTRAINT "shipping_addresses_customer_id_fkey" FOREIGN KEY ("customer_id") REFERENCES "customers"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
-COMMENT ON TABLE products IS '商品';
-COMMENT ON COLUMN products.code IS '商品コード';
+COMMENT ON TABLE products IS '商品：社内全体で管理されている商品コードを格納';
+COMMENT ON COLUMN products.code IS '商品コード；社内全体で管理されている';
 
 COMMENT ON TABLE books IS '書籍';
 COMMENT ON COLUMN books.title IS '書籍名';
@@ -129,13 +129,13 @@ COMMENT ON COLUMN books.price IS '価格';
 COMMENT ON COLUMN books.subtitle IS 'サブタイトル';
 COMMENT ON COLUMN books.publisher_id IS '出版社ID';
 
-COMMENT ON TABLE publishers IS '出版社';
+COMMENT ON TABLE publishers IS '出版社（管理者用アプリからのみ作成される）';
 COMMENT ON COLUMN publishers.name IS '出版社名';
 
-COMMENT ON TABLE authors IS '著者';
+COMMENT ON TABLE authors IS '著者（書籍とは別に作成可能）';
 COMMENT ON COLUMN authors.name IS '著者名';
 
-COMMENT ON TABLE author_books IS '著者と書籍の関連';
+COMMENT ON TABLE author_books IS '著者と書籍の中間テーブル';
 COMMENT ON COLUMN author_books.author_id IS '著者ID';
 COMMENT ON COLUMN author_books.book_id IS '書籍ID';
 
@@ -146,9 +146,9 @@ COMMENT ON COLUMN book_images.book_id IS '書籍ID';
 COMMENT ON TABLE customers IS '顧客';
 COMMENT ON COLUMN customers.name IS '顧客名';
 COMMENT ON COLUMN customers.email IS 'メールアドレス';
-COMMENT ON COLUMN customers.password IS 'パスワード';
+COMMENT ON COLUMN customers.password IS 'パスワード（暗号化済み）';
 
-COMMENT ON TABLE orders IS '注文';
+COMMENT ON TABLE orders IS '注文：注文の確定ごとに作成される。請求処理は注文の重複がないかどうか確認されてから行われるため、必ずしも対応関係ではない。';
 COMMENT ON COLUMN orders.customer_id IS '顧客ID';
 
 COMMENT ON TABLE order_items IS '注文明細';
