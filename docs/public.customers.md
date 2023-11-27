@@ -11,7 +11,7 @@
 | id | text |  | false | [public.orders](public.orders.md) [public.shipping_addresses](public.shipping_addresses.md) |  |  |
 | name | text |  | false |  |  | 顧客名 |
 | email | text |  | false |  |  | メールアドレス |
-| password | text |  | false |  |  | パスワード |
+| password | text |  | false |  |  | パスワード（暗号化済み） |
 
 ## Viewpoints
 
