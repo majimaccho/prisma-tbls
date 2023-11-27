@@ -2,7 +2,7 @@
 
 ## 概要
 
-書籍を購入する
+書籍を購入する際に関連するテーブルのまとまり。 顧客が購入できるためには、配送先が設定される必要がある。 配送時に参照される製品コードはproductsテーブルから取得される。
 
 ## テーブル一覧
 
@@ -10,9 +10,6 @@
 | ---- | ------- | ------- | ---- |
 | [public.products](public.products.md) | 2 | 商品 | BASE TABLE |
 | [public.books](public.books.md) | 6 | 書籍 | BASE TABLE |
-| [public.publishers](public.publishers.md) | 2 | 出版社 | BASE TABLE |
-| [public.authors](public.authors.md) | 2 | 著者 | BASE TABLE |
-| [public.author_books](public.author_books.md) | 2 | 著者と書籍の関連 | BASE TABLE |
 | [public.customers](public.customers.md) | 4 | 顧客 | BASE TABLE |
 | [public.orders](public.orders.md) | 2 | 注文 | BASE TABLE |
 | [public.order_items](public.order_items.md) | 5 | 注文明細 | BASE TABLE |
@@ -23,9 +20,6 @@
 ```mermaid
 erDiagram
 
-"public.books" }o--|| "public.publishers" : "FOREIGN KEY (publisher_id) REFERENCES publishers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
-"public.author_books" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
-"public.author_books" }o--|| "public.authors" : "FOREIGN KEY (author_id) REFERENCES authors(id) ON UPDATE CASCADE ON DELETE RESTRICT"
 "public.orders" }o--|| "public.customers" : "FOREIGN KEY (customer_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE RESTRICT"
 "public.order_items" }o--|| "public.books" : "FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE RESTRICT"
 "public.order_items" }o--|| "public.orders" : "FOREIGN KEY (order_id) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE RESTRICT"
@@ -42,18 +36,6 @@ erDiagram
   integer price
   text subtitle
   text publisher_id
-}
-"public.publishers" {
-  text id
-  text name
-}
-"public.authors" {
-  text id
-  text name
-}
-"public.author_books" {
-  text author_id
-  text book_id
 }
 "public.customers" {
   text id

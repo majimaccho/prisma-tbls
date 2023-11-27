@@ -33,7 +33,7 @@ lintExclude:
 viewpoints:
   -
     name: 書籍の追加
-    desc: 書籍を追加する
+    desc: 書籍を追加する際に関連するテーブルのまとまり
     tables:
       - books
       - products
@@ -44,26 +44,26 @@ viewpoints:
 
   - 
     name: 顧客の追加
-    desc: 顧客を追加する
+    desc: 顧客を追加する際に関連するテーブルのまとまり
     tables:
       - customers
 
   - 
     name: 配送先の追加
-    desc: 配送先を追加する
+    desc: 配送先を追加する際に関連するテーブルのまとまり
     tables:
       - shipping_addresses
       - customers
 
   - 
     name: 書籍の購入
-    desc: 書籍を購入する
+    desc: 
+      書籍を購入する際に関連するテーブルのまとまり。
+      顧客が購入できるためには、配送先が設定される必要がある。
+      配送時に参照される製品コードはproductsテーブルから取得される。
     tables:
       - books
       - products
-      - publishers
-      - authors
-      - author_books
       - customers
       - shipping_addresses
       - orders
