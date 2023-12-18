@@ -24,6 +24,8 @@
 | [public.orders](public.orders.md) | 2 | 注文：注文の確定ごとに作成される。請求処理は注文の重複がないかどうか確認されてから行われるため、必ずしも対応関係ではない。 | BASE TABLE |
 | [public.order_items](public.order_items.md) | 5 | 注文明細 | BASE TABLE |
 | [public.shipping_addresses](public.shipping_addresses.md) | 6 | 配送先 | BASE TABLE |
+| [public.author_ranking_materialized_view](public.author_ranking_materialized_view.md) | 3 | 著者ごとの書籍販売数ランキングのマテビュー | MATERIALIZED VIEW |
+| [public.books_view](public.books_view.md) | 7 | 書籍のビュー | VIEW |
 
 ## ER図
 
@@ -102,6 +104,20 @@ erDiagram
   text postal_code
   text address
   text tel
+}
+"public.author_ranking_materialized_view" {
+  text author_id
+  text author_name
+  bigint book_count
+}
+"public.books_view" {
+  text id
+  text title
+  integer price
+  text publisher_id
+  text publisher_name
+  text author_id
+  text author_name
 }
 ```
 

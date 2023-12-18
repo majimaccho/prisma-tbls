@@ -6,6 +6,24 @@
 
 ## テーブル一覧
 
+### View
+
+関連するビュー
+
+| 名前 | カラム一覧 | コメント | タイプ |
+| ---- | ------- | ------- | ---- |
+| [public.books_view](public.books_view.md) | 7 | 書籍のビュー | VIEW |
+
+### Materialized View
+
+関連するマテリアライズドビュー
+
+| 名前 | カラム一覧 | コメント | タイプ |
+| ---- | ------- | ------- | ---- |
+| [public.author_ranking_materialized_view](public.author_ranking_materialized_view.md) | 3 | 著者ごとの書籍販売数ランキングのマテビュー | MATERIALIZED VIEW |
+
+### -
+
 | 名前 | カラム一覧 | コメント | タイプ |
 | ---- | ------- | ------- | ---- |
 | [public.products](public.products.md) | 2 | 商品：社内全体で管理されている商品コードを格納 | BASE TABLE |
@@ -61,6 +79,20 @@ erDiagram
   text postal_code
   text address
   text tel
+}
+"public.author_ranking_materialized_view" {
+  text author_id
+  text author_name
+  bigint book_count
+}
+"public.books_view" {
+  text id
+  text title
+  integer price
+  text publisher_id
+  text publisher_name
+  text author_id
+  text author_name
 }
 ```
 

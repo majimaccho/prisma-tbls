@@ -68,5 +68,16 @@ viewpoints:
       - shipping_addresses
       - orders
       - order_items
-
-  
+      - books_view
+      - author_ranking_materialized_view
+    groups: 
+      - 
+        name: View
+        desc: 関連するビュー
+        tables:
+          - books_view
+      - 
+        name: Materialized View
+        desc: 関連するマテリアライズドビュー
+        tables:
+          - author_ranking_materialized_view
